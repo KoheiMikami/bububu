@@ -7,17 +7,69 @@
 //
 
 #import "ViewController.h"
+#import <AudioToolbox/AudioToolbox.h>
+
+
 
 @interface ViewController ()
 
 @end
 
-@implementation ViewController
+@implementation ViewController {
+    
+    __weak IBOutlet UIButton *bububu;
+    __weak IBOutlet UIButton *bububuThree;
+    __weak IBOutlet UIButton *bububuFiveTime;
+    SystemSoundID soundId;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    soundId = kSystemSoundID_Vibrate;
 }
+
+
+- (IBAction)bububuTouch:(id)sender {
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+}
+
+- (IBAction)bububuThreeTime:(id)sender {
+    char *isThree = "three";
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    AudioServicesAddSystemSoundCompletion(soundId,NULL,NULL,bububuBack,isThree);
+}
+
+- (IBAction)bububuFiveSecond:(id)sender {
+    char *isFive = "fiveTime";
+    AudioServicesAddSystemSoundCompletion(soundId,NULL,NULL,bububuBack,isFive);
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(timerInfo:) userInfo:nil repeats:NO];
+}
+
+
+void bububuBack(SystemSoundID soundId, void *clientData) {
+
+    if (strcmp(clientData, "three") == 0) {
+        static int count = 0;
+        count++;
+        if (count < 3) {
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+        }else{
+            AudioServicesRemoveSystemSoundCompletion(kSystemSoundID_Vibrate);
+            count = 0;
+        }
+    }
+    
+    if (strcmp(clientData, "fiveTime") == 0) {
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    }
+}
+
+
+-(void) timerInfo:(NSTimer *)timer {
+    AudioServicesRemoveSystemSoundCompletion(kSystemSoundID_Vibrate);
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

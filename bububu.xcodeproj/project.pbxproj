@@ -14,6 +14,7 @@
 		5529D3661B445A7A000277E4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5529D3651B445A7A000277E4 /* Images.xcassets */; };
 		5529D3691B445A7A000277E4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5529D3671B445A7A000277E4 /* LaunchScreen.xib */; };
 		5529D3751B445A7A000277E4 /* bububuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5529D3741B445A7A000277E4 /* bububuTests.m */; };
+		5529D37F1B445AD6000277E4 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5529D37E1B445AD6000277E4 /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		5529D36E1B445A7A000277E4 /* bububuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bububuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5529D3731B445A7A000277E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5529D3741B445A7A000277E4 /* bububuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = bububuTests.m; sourceTree = "<group>"; };
+		5529D37E1B445AD6000277E4 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5529D37F1B445AD6000277E4 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +66,7 @@
 		5529D34C1B445A7A000277E4 = {
 			isa = PBXGroup;
 			children = (
+				5529D37E1B445AD6000277E4 /* AudioToolbox.framework */,
 				5529D3571B445A7A000277E4 /* bububu */,
 				5529D3711B445A7A000277E4 /* bububuTests */,
 				5529D3561B445A7A000277E4 /* Products */,
@@ -350,6 +354,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = bububu/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -360,6 +365,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = bububu/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
