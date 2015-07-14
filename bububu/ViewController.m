@@ -36,20 +36,21 @@
 - (IBAction)bububuThreeTime:(id)sender {
     char *isThree = "three";
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-    AudioServicesAddSystemSoundCompletion(soundId,NULL,NULL,bububuBack,isThree);
+    AudioServicesAddSystemSoundCompletion(soundId,NULL,NULL,bububuBack,(void *)isThree);
 }
 
 - (IBAction)bububuFiveSecond:(id)sender {
     char *isFive = "fiveTime";
-    AudioServicesAddSystemSoundCompletion(soundId,NULL,NULL,bububuBack,isFive);
+    AudioServicesAddSystemSoundCompletion(soundId,NULL,NULL,bububuBack,(void *)isFive);
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
     [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(timerInfo:) userInfo:nil repeats:NO];
 }
 
 
 void bububuBack(SystemSoundID soundId, void *clientData) {
-
-    if (strcmp(clientData, "three") == 0) {
+    
+    char *receiveStr =(char*)clientData;
+    if (strcmp(receiveStr, "three") == 0) {
         static int count = 0;
         count++;
         if (count < 3) {
@@ -60,7 +61,7 @@ void bububuBack(SystemSoundID soundId, void *clientData) {
         }
     }
     
-    if (strcmp(clientData, "fiveTime") == 0) {
+    if (strcmp(receiveStr, "fiveTime") == 0) {
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
     }
 }
